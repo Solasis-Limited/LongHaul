@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<style>body{margin:0}</style>
+<title>Long Haul</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* Layout: one calm column. Hero pairs the pitch with a sample invitation card, then steps, audiences, safety, and the sign-up form. */
+:root {
+  --bg: #f2f5f4;
+  --surface: #ffffff;
+  --ink: #11262b;
+  --muted: #4c6168;
+  --line: #d5dedc;
+  --accent: #0b6e6a;
+  --accent-ink: #ffffff;
+  --sun: #f2b84b;
+  --sun-ink: #3a2a00;
+  --error: #a8321f;
+  --font-display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1a1d;
+    --surface: #152428;
+    --ink: #e8f0ee;
+    --muted: #9db2b0;
+    --line: #27393d;
+    --accent: #4fc3bb;
+    --accent-ink: #06201f;
+    --sun: #e0a93a;
+    --sun-ink: #1f1600;
+    --error: #ff9a85;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1a1d;
+  --surface: #152428;
+  --ink: #e8f0ee;
+  --muted: #9db2b0;
+  --line: #27393d;
+  --accent: #4fc3bb;
+  --accent-ink: #06201f;
+  --sun: #e0a93a;
+  --sun-ink: #1f1600;
+  --error: #ff9a85;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  padding-inline: 16px;
+  padding-block: 0;
+}
+.wrap { max-width: 64rem; margin-inline: auto; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(2.3rem, 7vw, 4rem); font-weight: 700; letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; letter-spacing: -0.01em; }
+h3 { font-size: 1.15rem; font-weight: 500; }
+p { margin: 0; }
+a { color: var(--accent); }
+.eyebrow { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+.lede { font-size: 1.15rem; color: var(--muted); max-width: 34rem; }
+
+header.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 20px; }
+.brand { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; letter-spacing: -0.01em; }
+.btn {
+  display: inline-block; background: var(--accent); color: var(--accent-ink);
+  font: 600 1rem var(--font-body); text-decoration: none;
+  padding: 12px 22px; border-radius: 999px; border: 0; cursor: pointer;
+}
+.btn:hover { filter: brightness(1.08); }
+.btn:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
+.btn[disabled] { opacity: 0.6; cursor: wait; }
+.btn.small { padding: 8px 16px; font-size: 0.9rem; }
+
+.hero { display: grid; grid-template-columns: 1fr; gap: 40px; padding-block: 28px 56px; align-items: center; }
+.hero-copy { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; min-width: 0; }
+.hero-note { font-size: 0.9rem; color: var(--muted); }
+@media (min-width: 820px) { .hero { grid-template-columns: 1.1fr 0.9fr; gap: 56px; } }
+
+.invite { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; min-width: 0; }
+.invite-tag { background: var(--sun); color: var(--sun-ink); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 20px; }
+.invite-body { padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.invite-when { font-family: var(--font-display); font-size: 2rem; font-weight: 700; line-height: 1.05; }
+.invite-when small { display: block; font-family: var(--font-body); font-size: 0.95rem; font-weight: 500; color: var(--muted); margin-top: 4px; }
+.invite dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 8px 16px; font-size: 0.95rem; }
+.invite dt { color: var(--muted); }
+.invite dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.invite-actions { display: flex; flex-wrap: wrap; gap: 10px; padding-top: 4px; }
+.pill { padding: 9px 18px; border-radius: 999px; font-weight: 600; font-size: 0.95rem; border: 1px solid var(--line); }
+.pill.yes { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+section.block { padding-block: 48px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 28px; }
+.steps { display: grid; grid-template-columns: 1fr; gap: 24px; margin: 0; padding: 0; list-style: none; counter-reset: step; }
+.steps li { counter-increment: step; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.steps li::before { content: "Step " counter(step); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.steps p, .safety p { color: var(--muted); }
+@media (min-width: 640px) { .steps { grid-template-columns: repeat(2, 1fr); gap: 32px; } }
+@media (min-width: 960px) { .steps { grid-template-columns: repeat(4, 1fr); } }
+
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.chips li { background: var(--surface); border: 1px solid var(--line); padding: 8px 16px; border-radius: 999px; font-size: 0.95rem; }
+
+.safety { display: grid; grid-template-columns: 1fr; gap: 20px; }
+.safety div { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+@media (min-width: 720px) { .safety { grid-template-columns: repeat(2, 1fr); gap: 24px 40px; } }
+
+.join { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 24px 20px; display: flex; flex-direction: column; gap: 28px; margin-block: 24px 56px; scroll-margin-top: 16px; }
+@media (min-width: 720px) { .join { padding: 40px; } }
+form { display: flex; flex-direction: column; gap: 26px; }
+fieldset { border: 0; padding: 0; margin: 0; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+legend, label.field { font-weight: 600; padding: 0; }
+.hint { font-size: 0.88rem; color: var(--muted); font-weight: 400; }
+.row { display: grid; grid-template-columns: 1fr; gap: 20px; }
+@media (min-width: 720px) { .row { grid-template-columns: 1fr 1fr; } }
+.col { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+input[type="text"], input[type="email"], select, textarea {
+  width: 100%; font: 400 1rem var(--font-body); color: var(--ink); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px;
+}
+textarea { min-height: 5.5rem; resize: vertical; }
+.opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.opt { position: relative; }
+.opt input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.opt span { display: inline-block; padding: 9px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); font-size: 0.95rem; }
+.opt input:checked + span { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.opt input:focus-visible + span { outline: 3px solid var(--sun); outline-offset: 2px; }
+.consent { display: flex; gap: 12px; align-items: flex-start; font-size: 0.92rem; color: var(--muted); }
+.consent input { margin-top: 4px; width: 18px; height: 18px; flex: none; accent-color: var(--accent); }
+.notice { font-size: 0.95rem; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); }
+.notice.error { border-color: var(--error); color: var(--error); }
+.embed { background: #ffffff; border-radius: 16px; padding: 12px 8px; min-width: 0; }
+.thanks { display: flex; flex-direction: column; gap: 12px; }
+footer { padding-block: 8px 40px; font-size: 0.88rem; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <span class="brand">Long Haul</span>
+    <a class="btn small" href="#join">Join the list</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Friends for the long haul</p>
+        <h1>Make a friend who wants to be friends.</h1>
+        <p class="lede">Long Haul matches you with a few people nearby who want what you want: real friendships, close to home, that carry on long after the first coffee. Someone to check in on you, and to make a new place feel like home.</p>
+        <a class="btn" href="#join">Join the waiting list</a>
+        <p class="hero-note">We open one town at a time. Tell us where you live and we will let you know when it is your turn.</p>
+      </div>
+
+      <div class="invite" aria-label="Example invitation">
+        <div class="invite-tag">Example invitation</div>
+        <div class="invite-body">
+          <div class="invite-when">Saturday, 11:00<small>Coffee, about an hour</small></div>
+          <dl>
+            <dt>Where</dt><dd>A café on the high street, near the market square</dd>
+            <dt>Who</dt><dd>You and 2 others, all new to the area</dd>
+            <dt>Cost</dt><dd>Up to £5, your own drink</dd>
+            <dt>Opener</dt><dd>What brought you here?</dd>
+            <dt>Then</dt><dd>Meet again in two weeks, with the same people or someone new</dd>
+          </dl>
+          <div class="invite-actions" aria-hidden="true">
+            <span class="pill yes">Count me in</span>
+            <span class="pill">Can't make it</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="how">
+      <h2 id="how">Built for the second coffee, and the tenth</h2>
+      <ol class="steps">
+        <li><h3>Say what you are after</h3><p>Not just a hobby list. Tell us your situation and the kind of friendship you want.</p></li>
+        <li><h3>Meet your small circle</h3><p>We suggest a time and a public place with 2 to 4 people who want the same thing.</p></li>
+        <li><h3>Meet again</h3><p>A week later we check in. If it clicked, we plan the next one for the same people, or you can meet someone new.</p></li>
+        <li><h3>Belong here</h3><p>Friends stay in touch, welcome the next newcomer and make the town feel like yours.</p></li>
+      </ol>
+    </section>
+
+    <section class="block" aria-labelledby="diff">
+      <h2 id="diff">Not just another way to meet new people</h2>
+      <div class="safety">
+        <div><h3>Friends, not contacts</h3><p>The goal is people who chat, ask about your week and turn up for you. A one-off meetup is only the start.</p></div>
+        <div><h3>Keep the ones who click</h3><p>Friendships take repeat time together, so we help you meet again with the people you connect with. No one is stuck, and you can always meet someone new.</p></div>
+        <div><h3>Everyone wants the same thing</h3><p>Everyone who joins says they are looking for lasting friendship and happy to meet more than once.</p></div>
+        <div><h3>Welcome in a new place</h3><p>Matched on where you are in life, such as new here, new parent or newly retired, so people understand what you are going through.</p></div>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="who">
+      <h2 id="who">Who it is for</h2>
+      <p class="lede">Anyone who wants someone to ask how they got on, not just someone to sit with once.</p>
+      <ul class="chips">
+        <li>New to the area</li>
+        <li>Working from home</li>
+        <li>Recently retired</li>
+        <li>New parents</li>
+        <li>Carers</li>
+        <li>Practising English</li>
+        <li>Moved for work or study</li>
+        <li>After a big life change</li>
+        <li>Shy, and ready to try</li>
+      </ul>
+    </section>
+
+    <section class="block" aria-labelledby="safe">
+      <h2 id="safe">Meeting new people, kept simple</h2>
+      <div class="safety">
+        <div><h3>Public places only</h3><p>Cafés, parks and community spaces. Never someone's home.</p></div>
+        <div><h3>Small groups</h3><p>Two to four people, so there is no pressure and no awkward silence to fill alone.</p></div>
+        <div><h3>Your details stay private</h3><p>Matches see your first name. Your email is never shared.</p></div>
+        <div><h3>You are in control</h3><p>Decline any invitation, and block or report anyone, at any time.</p></div>
+      </div>
+    </section>
+
+    <section class="join" id="join" aria-labelledby="joinh">
+      <div class="thanks" style="gap:8px">
+        <p class="eyebrow">Waiting list</p>
+        <h2 id="joinh">Tell us where you are</h2>
+        <p class="lede">The more people sign up in one town, the sooner we can open it. For now we are for adults aged 18 and over.</p>
+      </div>
+
+      <div class="embed">
+        <iframe data-tally-src="https://tally.so/embed/lboLJ5?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1" loading="lazy" width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0" title="Long Haul waiting list"></iframe>
+      </div>
+      <p class="hint">Form not showing? <a href="https://tally.so/r/lboLJ5" target="_blank" rel="noopener">Open it in a new tab</a>.</p>
+    </section>
+  </main>
+
+  <footer>Adults aged 18 and over only for now. We use your answers only to match you and to contact you about Long Haul.</footer>
+</div>
+
+<script>
+var d = document, w = "https://tally.so/widgets/embed.js";
+var v = function () {
+  if (typeof Tally !== "undefined") { Tally.loadEmbeds(); }
+  else { d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function (e) { e.src = e.dataset.tallySrc; }); }
+};
+if (typeof Tally !== "undefined") { v(); }
+else if (d.querySelector('script[src="' + w + '"]') == null) {
+  var s = d.createElement("script");
+  s.src = w; s.onload = v; s.onerror = v;
+  d.body.appendChild(s);
+}
+</script>
+
+</body>
+</html>
