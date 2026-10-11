@@ -4,8 +4,34 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light dark">
+<title>Long Haul: Friends for the long haul</title>
+<meta name="description" content="Real friendships, close to home. Long Haul matches you with a few people nearby for friendships that last past the first coffee. Join the waiting list.">
+<link rel="canonical" href="https://longhaul.solasislimited.org/">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Long Haul">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Long Haul: Friends for the long haul">
+<meta property="og:description" content="Real friendships, close to home. Long Haul matches you with a few people nearby for friendships that last past the first coffee. Join the waiting list.">
+<meta property="og:url" content="https://longhaul.solasislimited.org/">
+<meta property="og:image" content="https://longhaul.solasislimited.org/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Long Haul logo: two people with a winding path between them. Friends for the long haul.">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Long Haul: Friends for the long haul">
+<meta name="twitter:description" content="Real friendships, close to home. Long Haul matches you with a few people nearby for friendships that last past the first coffee. Join the waiting list.">
+<meta name="twitter:image" content="https://longhaul.solasislimited.org/og-image.png">
+<meta name="twitter:image:alt" content="Long Haul logo: two people with a winding path between them. Friends for the long haul.">
 <style>body{margin:0}</style>
-<title>Long Haul</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap">
@@ -21,6 +47,7 @@
   --accent-ink: #ffffff;
   --sun: #f2b84b;
   --sun-ink: #3a2a00;
+  --logo-tile: transparent;
   --error: #a8321f;
   --font-display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
   --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -36,6 +63,7 @@
     --accent-ink: #06201f;
     --sun: #e0a93a;
     --sun-ink: #1f1600;
+    --logo-tile: #ffffff;
     --error: #ff9a85;
     color-scheme: dark;
   }
@@ -50,6 +78,7 @@
   --accent-ink: #06201f;
   --sun: #e0a93a;
   --sun-ink: #1f1600;
+  --logo-tile: #ffffff;
   --error: #ff9a85;
   color-scheme: dark;
 }
@@ -75,7 +104,8 @@ a { color: var(--accent); }
 .lede { font-size: 1.15rem; color: var(--muted); max-width: 34rem; }
 
 header.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 20px; }
-.brand { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; letter-spacing: -0.01em; }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; letter-spacing: -0.01em; }
+.brand img { display: block; height: 44px; width: auto; background: var(--logo-tile); border-radius: 10px; padding: 3px 5px; }
 .btn {
   display: inline-block; background: var(--accent); color: var(--accent-ink);
   font: 600 1rem var(--font-body); text-decoration: none;
@@ -150,9 +180,9 @@ footer { padding-block: 8px 40px; font-size: 0.88rem; color: var(--muted); }
 
 </head>
 <body>
-<div class="wrap">
+<div class="wrap" id="top">
   <header class="top">
-    <span class="brand">Long Haul</span>
+    <a class="brand" href="#top"><img src="logo-icon.png" alt="" width="53" height="44"><span>Long Haul</span></a>
     <a class="btn small" href="#join">Join the list</a>
   </header>
 
